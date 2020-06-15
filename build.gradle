@@ -9,8 +9,7 @@ plugins {
 group 'com.fortify.ssc.parser.clair.rest'
 
 ext {
-	//gradleHelpersLocation = "https://raw.githubusercontent.com/fortify-ps/gradle-helpers/1.2"
-	gradleHelpersLocation = "../gradle-helpers"
+	gradleHelpersLocation = "https://raw.githubusercontent.com/fortify-ps/gradle-helpers/1.2"
 }
 
 apply from: "${gradleHelpersLocation}/repo-helper.gradle"
@@ -50,7 +49,7 @@ configurations.all {
 }
 
 dependencies {
-    compileExport(group: 'com.fortify.ssc.parser.util', name: 'fortify-ssc-parser-util', version:'1.3-SNAPSHOT', changing: true) { transitive = true }
+    compileExport(group: 'com.fortify.ssc.parser.util', name: 'fortify-ssc-parser-util', version:'1.2', changing: true) { transitive = true }
 	compileExport(group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version:'2.8.4', changing: false) { transitive = true }
 	compileExport(group: 'com.fasterxml.woodstox', name: 'woodstox-core', version:'6.2.1', changing: false) { transitive = true }
 }
