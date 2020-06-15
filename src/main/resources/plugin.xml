@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin xmlns="xmlns://www.fortify.com/schema/pluginmanifest-1.0.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PluginDescriptor"
+        id="com.fortify.ssc.parser.burp" api-version="1.0">
+    <plugin-info>
+        <name>PortSwigger BURP parser plugin</name>
+        <version><!--VERSION-->0.0<!--/VERSION--></version>
+        <data-version>1</data-version>
+        <vendor name="Micro Focus" url="https://www.microfocus.com"/>
+        <description><![CDATA[Parser plugin for PortSwigger BURP]]></description>
+        <resources>
+            <localization>
+                <language id="default" location="/resources/messages_en.properties"/>
+                <language id="en" location="/resources/messages_en.properties"/>
+            </localization>
+            <images>
+                <image imageType="icon" location="/images/icon.png"/>
+                <image imageType="logo" location="/images/logo.png"/>
+            </images>
+        </resources>
+    </plugin-info>
+    <issue-parser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <engine-type>BURP_XML</engine-type>
+        <supported-engine-versions>[2020.5]</supported-engine-versions>
+        <view-template location="/viewtemplate/ViewTemplate.json">
+            <description>Default view template.</description>
+        </view-template>
+    </issue-parser>
+</plugin>

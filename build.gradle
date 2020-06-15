@@ -1,0 +1,80 @@
+plugins {
+  id "io.freefair.lombok" version "4.1.2"
+  id "com.jfrog.bintray" version "1.8.4"
+  id 'org.ajoberstar.grgit' version "4.0.0"
+  id 'com.github.jk1.dependency-license-report' version '1.12'
+  id "org.kordamp.gradle.markdown" version "2.0.0"
+}
+
+group 'com.fortify.ssc.parser.clair.rest'
+
+ext {
+	//gradleHelpersLocation = "https://raw.githubusercontent.com/fortify-ps/gradle-helpers/1.2"
+	gradleHelpersLocation = "../gradle-helpers"
+}
+
+apply from: "${gradleHelpersLocation}/repo-helper.gradle"
+apply from: "${gradleHelpersLocation}/junit-helper.gradle"
+apply from: "${gradleHelpersLocation}/version-helper.gradle"
+apply from: "${gradleHelpersLocation}/fortify-helper.gradle"
+
+// Project and plugin version based on SCM information
+version = getProjectVersionAsBetaOrRelease(true)
+ext {
+	sscParserPluginVersion = getProjectVersionAsPlainVersionNumber()
+	bintrayRepo = "${getBetaOrReleaseLabel()}"
+	bintrayPkgName = "${rootProject.name}"
+	bintrayDownloadContainerName = getProjectVersionAsBetaOrRelease(false)
+	projectLicense = 'MIT'
+}
+
+apply from: "${gradleHelpersLocation}/ssc-parser-plugin-helper.gradle"
+apply from: "${gradleHelpersLocation}/thirdparty-helper.gradle"
+apply from: "${gradleHelpersLocation}/bintray-binaries-helper.gradle"
+apply from: "${gradleHelpersLocation}/readme2html.gradle"
+
+apply plugin: 'java'
+sourceCompatibility = 1.8
+
+sourceSets {
+    test {
+        resources {
+            srcDir "sampleData"
+        }
+    }
+}
+
+configurations.all {
+    // Don't cache modules that may change (i.e. snapshots)
+	resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+    compileExport(group: 'com.fortify.ssc.parser.util', name: 'fortify-ssc-parser-util', version:'1.3-SNAPSHOT', changing: true) { transitive = true }
+	compileExport(group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version:'2.8.4', changing: false) { transitive = true }
+	compileExport(group: 'com.fasterxml.woodstox', name: 'woodstox-core', version:'6.2.1', changing: false) { transitive = true }
+}
+
+task dist(type: Zip) {
+	dependsOn 'build', 'readme2html'
+	archiveFileName = "${rootProject.name}-${project.version}.zip"
+	destinationDirectory = file("$buildDir/dist")
+	from("${libsDir}") {
+		include "${rootProject.name}-${project.version}.jar"
+	}
+	from "${buildDir}/html"
+	from("${projectDir}") {
+		include "sampleData/**/*"
+		include "LICENSE.TXT"
+	}
+}
+
+bintray {
+    filesSpec {
+       from("${buildDir}/dist") {
+          include "*.zip"
+       }
+       into '.'
+    }
+}
+_bintrayRecordingCopy.dependsOn 'clean', 'dist', 'distThirdParty'

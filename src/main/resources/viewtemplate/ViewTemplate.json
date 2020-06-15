@@ -1,0 +1,47 @@
+[
+	[
+		{
+			"type": "template",
+			"title": "Details",
+			"templateId": "TITLEBOX",
+			"items": [
+				{
+					"type": "template",
+					"title": "Severity",
+					"key": "customAttributes.severity",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				},
+				{
+					"type": "template",
+					"title": "Confidence",
+					"key": "customAttributes.confidence",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				},
+				{
+					"type": "template",
+					"title": "Host",
+					"key": "customAttributes.host",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				},
+				{
+					"type": "template",
+					"title": "Path",
+					"key": "customAttributes.path",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				}
+			]
+		}
+	], [
+		{
+			"type": "template",
+			"title": "Description",
+			"key": "brief",
+			"templateId": "COLLAPSE",
+			"dataType": "string"
+		}
+	]
+]
