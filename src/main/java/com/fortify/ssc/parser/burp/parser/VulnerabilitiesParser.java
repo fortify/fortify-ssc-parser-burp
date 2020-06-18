@@ -112,15 +112,17 @@ public class VulnerabilitiesParser {
 	}
 	
 	private final String getCodeAsHtml(String code, int maxTotalLength) {
-		final String codePrefix = "<pre><code>";
-		final String codeSuffix = "</code></pre>";
-		final int maxCodeLength = maxTotalLength-codePrefix.length()-codeSuffix.length();
-		
-		return new StringBuilder()
-				.append(codePrefix)
+		StringBuilder sb = new StringBuilder();
+		if ( StringUtils.isNotBlank(code) ) {
+			final String codePrefix = "<pre><code>";
+			final String codeSuffix = "</code></pre>";
+			final int maxCodeLength = maxTotalLength-codePrefix.length()-codeSuffix.length();
+			
+			sb.append(codePrefix)
 				.append(StringUtils.abbreviate(code, maxCodeLength))
-				.append(codeSuffix)
-				.toString();
+				.append(codeSuffix);
+		} 
+		return sb.toString();
 	}
 	
 	private final void appendSection(StringBuilder sb, String header, String text) {
