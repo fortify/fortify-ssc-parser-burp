@@ -15,6 +15,7 @@ import com.fortify.plugin.api.StaticVulnerabilityBuilder;
 import com.fortify.plugin.api.VulnerabilityHandler;
 import com.fortify.ssc.parser.burp.CustomVulnAttribute;
 import com.fortify.ssc.parser.burp.domain.Issue;
+import com.fortify.ssc.parser.burp.domain.RequestResponse;
 import com.fortify.util.ssc.parser.EngineTypeHelper;
 import com.fortify.util.ssc.parser.xml.ScanDataStreamingXmlParser;
 
@@ -60,14 +61,15 @@ public class VulnerabilitiesParser {
 		vb.setLikelihood(2.5f);
 		
 		vb.setFileName(getFileName(issue));
-		vb.setVulnerabilityAbstract(getVulnerabilityAbstract(issue));
 		vb.setPriority(getPriority(issue));
+		vb.setVulnerabilityAbstract(getVulnerabilityAbstract(issue));
 		
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.severity, issue.getSeverity());
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.confidence, issue.getConfidence());
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.host, issue.getHost());
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.path, issue.getPath());
-		
+		vb.setStringCustomAttributeValue(CustomVulnAttribute.request, getRequestText(issue));
+		vb.setStringCustomAttributeValue(CustomVulnAttribute.response, getResponseText(issue));
 		vb.completeVulnerability();
     }
 
@@ -90,14 +92,38 @@ public class VulnerabilitiesParser {
 
 	private String getVulnerabilityAbstract(Issue issue) {
 		StringBuilder sb = new StringBuilder();
-		appendSection(sb, "Issue Detail", issue.getIssueDetail());
+		appendSection(sb, "Issue Details", issue.getIssueDetail());
 		appendSection(sb, "Issue Background", issue.getIssueBackground());
-		appendSection(sb, "Remediation Detail", issue.getRemediationDetail());
-		appendSection(sb, "Remediation Background", issue.getRemediationBackground());
+		appendSection(sb, "Recommendation Details", issue.getRemediationDetail());
+		appendSection(sb, "Recommendation Background", issue.getRemediationBackground());
+		appendSection(sb, "Classifications", issue.getVulnerabilityClassifications());
+		appendSection(sb, "References", issue.getReferences());
 		return sb.toString();
 	}
 	
-	private void appendSection(StringBuilder sb, String header, String text) {
+	private String getRequestText(Issue issue) {
+		RequestResponse requestResponse = issue.getRequestresponse();
+		return requestResponse==null ? "" : getCodeAsHtml(requestResponse.getRequestDecoded(), 1000);
+	}
+	
+	private String getResponseText(Issue issue) {
+		RequestResponse requestResponse = issue.getRequestresponse();
+		return requestResponse==null ? "" : getCodeAsHtml(requestResponse.getResponseDecoded(), 1000);
+	}
+	
+	private final String getCodeAsHtml(String code, int maxTotalLength) {
+		final String codePrefix = "<pre><code>";
+		final String codeSuffix = "</code></pre>";
+		final int maxCodeLength = maxTotalLength-codePrefix.length()-codeSuffix.length();
+		
+		return new StringBuilder()
+				.append(codePrefix)
+				.append(StringUtils.abbreviate(code, maxCodeLength))
+				.append(codeSuffix)
+				.toString();
+	}
+	
+	private final void appendSection(StringBuilder sb, String header, String text) {
 		if ( StringUtils.isNotBlank(text) ) {
 			sb.append("<b>").append(header).append("</b><br/>\n").append(text).append("<br/>\n");
 		}

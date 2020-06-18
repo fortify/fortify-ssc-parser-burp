@@ -24,31 +24,29 @@
  ******************************************************************************/
 package com.fortify.ssc.parser.burp.domain;
 
+import java.util.Base64;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
 @Data
-public class Issue {
-	@JsonProperty private String serialNumber;
-	//@JsonProperty private String type;
-	@JsonProperty private String name;
-	@JsonProperty private String host; // We don't use ip attribute
-	@JsonProperty private String path;
-	//@JsonProperty private String location;
-	@JsonProperty private String severity;
-	@JsonProperty private String confidence;
-	@JsonProperty private String issueBackground;
-	@JsonProperty private String remediationBackground;
-	@JsonProperty private String references;
-	@JsonProperty private String vulnerabilityClassifications;
-	@JsonProperty private String issueDetail;
-	//@JsonProperty private IssueDetailItem[] issueDetailsItems;
-	@JsonProperty private String remediationDetail;
-	@JsonProperty private RequestResponse requestresponse;
-	//@JsonProperty private CollaboratorEvent[] collaboratorEvents;
-	//@JsonProperty private InfiltratorEvent[] infiltratorEvents;
-	//@JsonProperty private StaticAnalysis[] staticAnalysiss;
-	//@JsonProperty private DynamicAnalysis[] dynamicAnalysiss;
+public class RequestResponse {
+	@JsonProperty private String request;
+	@JsonProperty private String response;
 	
+	public final String getRequestDecoded() {
+		return decode(getRequest());
+	}
+	
+	public final String getResponseDecoded() {
+		return decode(getResponse());
+	}
+
+	private final String decode(String encodedString) {
+		// Despite the 'base64=true|false' attribute, we assume requests and responses are always Base64-encoded so we don't handle IllegalArgumentException
+		return StringUtils.isBlank(encodedString) ? null :  new String(Base64.getDecoder().decode(encodedString));
+	}
 }

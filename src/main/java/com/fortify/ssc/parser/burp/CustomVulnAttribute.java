@@ -18,6 +18,8 @@ public enum CustomVulnAttribute implements com.fortify.plugin.spi.VulnerabilityA
 	confidence(AttrType.STRING),
 	host(AttrType.STRING),
 	path(AttrType.STRING),
+	request(AttrType.STRING),
+	response(AttrType.STRING),
 	;
 
     private final AttrType attributeType;

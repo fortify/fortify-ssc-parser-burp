@@ -21,7 +21,7 @@
     </plugin-info>
     <issue-parser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <engine-type>BURP_XML</engine-type>
-        <supported-engine-versions>[2020.5]</supported-engine-versions>
+        <supported-engine-versions>[2019.0, 2020.5]</supported-engine-versions>
         <view-template location="/viewtemplate/ViewTemplate.json">
             <description>Default view template.</description>
         </view-template>
