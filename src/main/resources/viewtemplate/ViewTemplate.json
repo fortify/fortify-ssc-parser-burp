@@ -2,6 +2,30 @@
 	[
 		{
 			"type": "template",
+			"title": "Issue",
+			"key": "customAttributes.issue",
+			"templateId": "COLLAPSE",
+			"dataType": "string"
+		},
+		{
+			"type": "template",
+			"title": "Remediation",
+			"key": "customAttributes.remediation",
+			"templateId": "COLLAPSE",
+			"dataType": "string"
+		}
+		,
+		{
+			"type": "template",
+			"title": "Additional References",
+			"key": "customAttributes.references",
+			"templateId": "COLLAPSE",
+			"dataType": "string"
+		}
+	],
+	[
+		{
+			"type": "template",
 			"title": "BURP Details",
 			"templateId": "TITLEBOX",
 			"items": [
@@ -35,15 +59,6 @@
 				}
 			]
 		},
-		{
-			"type": "template",
-			"title": "Issue",
-			"key": "brief",
-			"templateId": "COLLAPSE",
-			"dataType": "string"
-		}
-	],
-	[
 		{
 			"type": "template",
 			"title": "Request",

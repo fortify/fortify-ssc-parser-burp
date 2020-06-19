@@ -62,12 +62,14 @@ public class VulnerabilitiesParser {
 		
 		vb.setFileName(getFileName(issue));
 		vb.setPriority(getPriority(issue));
-		vb.setVulnerabilityAbstract(getVulnerabilityAbstract(issue));
 		
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.severity, issue.getSeverity());
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.confidence, issue.getConfidence());
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.host, issue.getHost());
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.path, issue.getPath());
+		vb.setStringCustomAttributeValue(CustomVulnAttribute.issue, getIssueText(issue));
+		vb.setStringCustomAttributeValue(CustomVulnAttribute.remediation, getRemediationText(issue));
+		vb.setStringCustomAttributeValue(CustomVulnAttribute.references, getReferencesText(issue));
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.request, getRequestText(issue));
 		vb.setStringCustomAttributeValue(CustomVulnAttribute.response, getResponseText(issue));
 		vb.completeVulnerability();
@@ -90,12 +92,22 @@ public class VulnerabilitiesParser {
         	.collect(Collectors.joining());
 	}
 
-	private String getVulnerabilityAbstract(Issue issue) {
+	private String getIssueText(Issue issue) {
 		StringBuilder sb = new StringBuilder();
-		appendSection(sb, "Issue Details", issue.getIssueDetail());
-		appendSection(sb, "Issue Background", issue.getIssueBackground());
-		appendSection(sb, "Recommendation Details", issue.getRemediationDetail());
-		appendSection(sb, "Recommendation Background", issue.getRemediationBackground());
+		appendSection(sb, "Details", issue.getIssueDetail());
+		appendSection(sb, "Background", issue.getIssueBackground());
+		return sb.toString();
+	}
+	
+	private String getRemediationText(Issue issue) {
+		StringBuilder sb = new StringBuilder();
+		appendSection(sb, "Details", issue.getRemediationDetail());
+		appendSection(sb, "Background", issue.getRemediationBackground());
+		return sb.toString();
+	}
+	
+	private String getReferencesText(Issue issue) {
+		StringBuilder sb = new StringBuilder();
 		appendSection(sb, "Classifications", issue.getVulnerabilityClassifications());
 		appendSection(sb, "References", issue.getReferences());
 		return sb.toString();
@@ -103,12 +115,12 @@ public class VulnerabilitiesParser {
 	
 	private String getRequestText(Issue issue) {
 		RequestResponse requestResponse = issue.getRequestresponse();
-		return requestResponse==null ? "" : getCodeAsHtml(requestResponse.getRequestDecoded(), 1000);
+		return requestResponse==null ? "" : getCodeAsHtml(requestResponse.getRequestDecoded(), 20000);
 	}
 	
 	private String getResponseText(Issue issue) {
 		RequestResponse requestResponse = issue.getRequestresponse();
-		return requestResponse==null ? "" : getCodeAsHtml(requestResponse.getResponseDecoded(), 1000);
+		return requestResponse==null ? "" : getCodeAsHtml(requestResponse.getResponseDecoded(), 20000);
 	}
 	
 	private final String getCodeAsHtml(String code, int maxTotalLength) {
