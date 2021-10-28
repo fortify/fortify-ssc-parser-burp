@@ -74,15 +74,7 @@ to be in XML format.
 
 ## Upload results
 
-SSC web interface (manual upload):
-
-* Navigate to the Artifacts tab of your application version
-* Click the `UPLOAD` button
-* Click the `ADD FILES` button, and select the JSON file to upload
-* Enable the `3rd party results` check box
-* Select the `BURP_XML` type
-  
-SSC clients (FortifyClient, Maven plugin, ...):
+As a 3<sup>rd</sup>-party results zip bundle:
 
 * Generate a scan.info file containing a single line as follows:  
 `engineType=BURP_XML`
@@ -90,8 +82,20 @@ SSC clients (FortifyClient, Maven plugin, ...):
 	* The scan.info file generated in the previous step
 	* The JSON file containing scan results
 * Upload the zip file generated in the previous step to SSC
-	* Using any SSC client, for example FortifyClient
+	* Using any SSC client, for example FortifyClient or Maven plugin
+	* Or using the SSC web interface
 	* Similar to how you would upload an FPR file
+
+As raw scan results:  
+
+* Navigate to the Artifacts tab of your application version
+* Click the `UPLOAD` button
+* Click the `ADD FILES` button, and select the JSON file to upload
+* Enable the `3rd party results` check box
+* Select the `BURP_XML` type
+
+*Note that uploading raw scan results is only supported for manual uploads through the SSC web interface, and this functionality was removed in SSC 20.2 so no longer available in recent SSC versions. Please submit a feature request if you'd like to see this easier process for ad-hoc uploading of 3<sup>rd</sup>-party results restored, referencing Octane id #448174.*
+
 
 
 
