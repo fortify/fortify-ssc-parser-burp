@@ -43,10 +43,10 @@ configurations.all {
 }
 
 dependencies {
-    implementationExport(group: 'com.fortify.ssc.parser.util', name: 'fortify-ssc-parser-util-xml', version:'1.6.0.RELEASE', changing: false) { transitive = true }
-    testImplementation(group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.3.1')
-    testImplementation(group: 'org.junit.platform', name: 'junit-platform-launcher', version: "1.1.0")
-    testRuntimeOnly(group: 'org.junit.jupiter', name:'junit-jupiter-engine', version: '5.3.1')
+    implementationExport(group: 'com.fortify.ssc.parser.util', name: 'fortify-ssc-parser-util-xml', version:'1.6.1.RELEASE', changing: false) { transitive = true }
+    testImplementation(group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.2')
+    testImplementation(group: 'org.junit.platform', name: 'junit-platform-launcher', version: "1.8.2")
+    testRuntimeOnly(group: 'org.junit.jupiter', name:'junit-jupiter-engine', version: '5.8.2')
     testRuntimeOnly(group: 'org.slf4j', name: 'slf4j-simple')
 }
 
