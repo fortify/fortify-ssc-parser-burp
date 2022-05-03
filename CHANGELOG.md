@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.2](https://www.github.com/fortify-ps/fortify-ssc-parser-burp/compare/v1.0.1...v1.0.2) (2022-05-03)
+
+
+### Bug Fixes
+
+* Improve upload instructions in README.md ([ef1603d](https://www.github.com/fortify-ps/fortify-ssc-parser-burp/commit/ef1603d37cbf8853f2e625f96a03455bee737cb4))
+
 ### [1.0.1](https://www.github.com/fortify-ps/fortify-ssc-parser-burp/compare/v1.0.1...v1.0.1) (2021-03-11)
 
 
