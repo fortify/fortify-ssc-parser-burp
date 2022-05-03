@@ -1,5 +1,13 @@
 # Changelog
 
+### [1.0.3](https://www.github.com/fortify-ps/fortify-ssc-parser-burp/compare/v1.0.2...v1.0.3) (2022-05-03)
+
+
+### Bug Fixes
+
+* Add missing changelog entry in previous release ([45bb4ea](https://www.github.com/fortify-ps/fortify-ssc-parser-burp/commit/45bb4ea7b2470d709c5b4ce70cf7883f7ea857fe))
+* Update (potentially vulnerable) dependency versions ([d16d0e5](https://www.github.com/fortify-ps/fortify-ssc-parser-burp/commit/d16d0e533f3ac96704c4b0911853cbb6012fe84c))
+
 ### [1.0.2](https://www.github.com/fortify-ps/fortify-ssc-parser-burp/compare/v1.0.1...v1.0.2) (2022-05-03)
 
 
