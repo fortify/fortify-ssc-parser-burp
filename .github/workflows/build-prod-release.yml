@@ -10,13 +10,16 @@ name: Build production release
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Check-out source code
         uses: actions/checkout@v2
       
       - name: Generate and process release PR
         id: release_please
-        uses: GoogleCloudPlatform/release-please-action@v2
+        uses: fortify/3rdparty-actions/actions/googleapis/release-please-action/v5@main
         with:
           release-type: simple
           package-name: ${{ github.event.repository.name }}
