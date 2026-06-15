@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check-out source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
       
       - name: Define development release info
         if: startsWith(github.ref, 'refs/heads/')
@@ -36,13 +36,13 @@ jobs:
         
       - name: Publish build artifacts
         if: env.DO_BUILD
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: build_artifacts
           path: ${{ env.DIST_DIR }}
           
       - name: Update development release tag
-        uses: richardsimko/update-tag@v1
+        uses: fortify/.github/.github/actions/update-tag@main
         if: env.DO_RELEASE
         with:
           tag_name: ${{ env.RELEASE_TAG }}
