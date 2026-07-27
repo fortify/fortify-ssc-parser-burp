@@ -13,14 +13,8 @@
 			"key": "customAttributes.remediation",
 			"templateId": "COLLAPSE",
 			"dataType": "string"
-		},
-		{
-			"type": "template",
-			"title": "Dynamic Analysis",
-			"key": "customAttributes.dynamicAnalysis",
-			"templateId": "COLLAPSE",
-			"dataType": "string"
-		},
+		}
+		,
 		{
 			"type": "template",
 			"title": "Additional References",
