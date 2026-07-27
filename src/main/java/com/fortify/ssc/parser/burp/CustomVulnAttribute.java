@@ -14,16 +14,17 @@ package com.fortify.ssc.parser.burp;
  */
 
 public enum CustomVulnAttribute implements com.fortify.plugin.spi.VulnerabilityAttribute {
-	severity(AttrType.STRING),
-	confidence(AttrType.STRING),
-	host(AttrType.STRING),
-	path(AttrType.STRING),
-	issue(AttrType.LONG_STRING),
-	remediation(AttrType.LONG_STRING),
-	references(AttrType.LONG_STRING),
-	request(AttrType.LONG_STRING),
-	response(AttrType.LONG_STRING),
-	;
+    severity(AttrType.STRING),
+    confidence(AttrType.STRING),
+    host(AttrType.STRING),
+    path(AttrType.STRING),
+    issue(AttrType.LONG_STRING),
+    remediation(AttrType.LONG_STRING),
+    dynamicAnalysis(AttrType.LONG_STRING),
+    references(AttrType.LONG_STRING),
+    request(AttrType.LONG_STRING),
+    response(AttrType.LONG_STRING),
+    ;
 
     private final AttrType attributeType;
 
