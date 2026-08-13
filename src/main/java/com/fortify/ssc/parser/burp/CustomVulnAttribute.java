@@ -23,8 +23,7 @@ public enum CustomVulnAttribute implements com.fortify.plugin.spi.VulnerabilityA
     dynamicAnalysis(AttrType.LONG_STRING),
     references(AttrType.LONG_STRING),
     request(AttrType.LONG_STRING),
-    response(AttrType.LONG_STRING),
-    ;
+    response(AttrType.LONG_STRING);
 
     private final AttrType attributeType;
 

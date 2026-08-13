@@ -15,42 +15,23 @@ import lombok.Data;
  */
 @Data
 public class DynamicAnalysis {
-    @JsonProperty
-    private String source;
-    @JsonProperty
-    private String sink;
-    @JsonProperty
-    private String sourceStackTrace;
-    @JsonProperty
-    private String sinkStackTrace;
-    @JsonProperty
-    private String eventListenerStackTrace;
-    @JsonProperty
-    private String sourceValue;
-    @JsonProperty
-    private String sinkValue;
-    @JsonProperty
-    private String eventHandlerData;
-    @JsonProperty
-    private String eventHandlerDataType;
-    @JsonProperty
-    private String eventHandlerManipulatedData;
-    @JsonProperty
-    private String poc;
-    @JsonProperty
-    private String origin;
-    @JsonProperty
-    private String isOriginChecked;
-    @JsonProperty
-    private String sourceElementId;
-    @JsonProperty
-    private String sourceElementName;
-    @JsonProperty
-    private String eventFiredEventName;
-    @JsonProperty
-    private String eventFiredElementId;
-    @JsonProperty
-    private String eventFiredElementName;
-    @JsonProperty
-    private String eventFiredOuterHtml;
+    @JsonProperty private String source;
+    @JsonProperty private String sink;
+    @JsonProperty private String sourceStackTrace;
+    @JsonProperty private String sinkStackTrace;
+    @JsonProperty private String eventListenerStackTrace;
+    @JsonProperty private String sourceValue;
+    @JsonProperty private String sinkValue;
+    @JsonProperty private String eventHandlerData;
+    @JsonProperty private String eventHandlerDataType;
+    @JsonProperty private String eventHandlerManipulatedData;
+    @JsonProperty private String poc;
+    @JsonProperty private String origin;
+    @JsonProperty private String isOriginChecked;
+    @JsonProperty private String sourceElementId;
+    @JsonProperty private String sourceElementName;
+    @JsonProperty private String eventFiredEventName;
+    @JsonProperty private String eventFiredElementId;
+    @JsonProperty private String eventFiredElementName;
+    @JsonProperty private String eventFiredOuterHtml;
 }

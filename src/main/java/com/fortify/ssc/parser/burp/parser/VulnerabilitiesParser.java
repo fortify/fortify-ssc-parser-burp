@@ -79,7 +79,6 @@ public class VulnerabilitiesParser {
 	private String getDynamicAnalysisText(Issue issue) {
 		StringBuilder sb = new StringBuilder();
 		List<DynamicAnalysis> dynamicAnalysisList = issue.getDynamicAnalysis();
-
 		if (dynamicAnalysisList != null) {
 			boolean first = true;
 			for (DynamicAnalysis da : dynamicAnalysisList) {

@@ -25,7 +25,6 @@
 package com.fortify.ssc.parser.burp.domain;
 
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -56,5 +55,4 @@ public class Issue {
 	@JacksonXmlElementWrapper(useWrapping = false)
 	@JacksonXmlProperty(localName = "dynamicAnalysis")
 	private List<DynamicAnalysis> dynamicAnalysis;
-
 }
