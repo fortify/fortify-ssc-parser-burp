@@ -18,11 +18,11 @@ import com.fortify.ssc.parser.burp.CustomVulnAttribute;
 import com.fortify.ssc.parser.burp.domain.DynamicAnalysis;
 import com.fortify.ssc.parser.burp.domain.Issue;
 import com.fortify.ssc.parser.burp.domain.RequestResponse;
-import com.fortify.util.ssc.parser.EngineTypeHelper;
+import com.fortify.util.ssc.parser.PluginXmlHelper;
 import com.fortify.util.ssc.parser.xml.ScanDataStreamingXmlParser;
 
 public class VulnerabilitiesParser {
-	private static final String ENGINE_TYPE = EngineTypeHelper.getEngineType();
+	private static final String ENGINE_TYPE = PluginXmlHelper.getPluginXmlDescriptor().getEngineType();
 	private static final Map<String, Priority> MAP_SEVERITY_TO_PRIORITY = Stream.of(
 		new AbstractMap.SimpleImmutableEntry<>("Information", Priority.Low),
 		new AbstractMap.SimpleImmutableEntry<>("Low", Priority.Medium),
