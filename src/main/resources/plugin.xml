@@ -5,7 +5,7 @@
     <plugin-info>
         <name>PortSwigger BURP parser plugin</name>
         <version><!--VERSION-->0.0<!--/VERSION--></version>
-        <data-version>1</data-version>
+        <data-version>2</data-version>
         <vendor name="Open Text" url="https://opentext.com"/>
         <description><![CDATA[Parser plugin for PortSwigger BURP]]></description>
         <resources>
