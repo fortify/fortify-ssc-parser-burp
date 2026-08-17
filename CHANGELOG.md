@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/fortify/fortify-ssc-parser-burp/compare/v1.0.3...v1.1.0) (2026-08-14)
+
+
+### Features
+
+* enable displaying dynamicAnalysis for vulnerabilities in SSC UI ([2e524a3](https://github.com/fortify/fortify-ssc-parser-burp/commit/2e524a38e771f00e67741b0942d572f0afd0fa87))
+* Show dynamic analysis data from Burp report (if available) ([7a1ae96](https://github.com/fortify/fortify-ssc-parser-burp/commit/7a1ae966d7b4891c3e91e09069a61fdea44c1469))
+
+
+### Bug Fixes
+
+* Truncate long text to prevent artifact processing errors ([7a1ae96](https://github.com/fortify/fortify-ssc-parser-burp/commit/7a1ae966d7b4891c3e91e09069a61fdea44c1469))
+* Update vendor name & URL to OpenText ([#17](https://github.com/fortify/fortify-ssc-parser-burp/issues/17)) ([8b2fb03](https://github.com/fortify/fortify-ssc-parser-burp/commit/8b2fb03774f695b85f24756240a5ce5e55a4dc80))
+* Upgrade dependencies ([7a1ae96](https://github.com/fortify/fortify-ssc-parser-burp/commit/7a1ae966d7b4891c3e91e09069a61fdea44c1469))
+
 ### [1.0.3](https://www.github.com/fortify-ps/fortify-ssc-parser-burp/compare/v1.0.2...v1.0.3) (2022-05-03)
 
 
